@@ -1,0 +1,443 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"14 keypad.c
+[; ;keypad.c: 14:         (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 0)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 1)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 2)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 3));
+[c E10 5 6 7 8 9 .. ]
+[n E10 . PORT_A PORT_B PORT_C PORT_D PORT_E  ]
+"17 ./delay.h
+[; ;./delay.h: 17: unint32 counter;
+[v _counter `ul ~T0 @X0 1 e ]
+[v F21 `Cuc ~T0 @X0 -> 3 `i t ]
+"5 keypad.c
+[; ;keypad.c: 5: static const unsigned char keypad[4][3]={
+[v _keypad `F21 ~T0 @X0 -> 4 `i s ]
+[i _keypad
+:U ..
+:U ..
+-> -> 42 `ui `uc
+-> -> 0 `i `uc
+-> -> 35 `ui `uc
+..
+:U ..
+-> -> 7 `i `uc
+-> -> 8 `i `uc
+-> -> 9 `i `uc
+..
+:U ..
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+..
+:U ..
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+..
+..
+]
+"12
+[; ;keypad.c: 12: void keypad_init(void)
+[v _keypad_init `(v ~T0 @X0 1 ef ]
+"13
+[; ;keypad.c: 13: {
+{
+[e :U _keypad_init ]
+[f ]
+"14
+[; ;keypad.c: 14:         (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 0)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 1)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 2)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 3));
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+"15
+[; ;keypad.c: 15:         (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 0)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 1)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 2)); (*((volatile unint8* )PORT_D + (unint8)0x80) &=~((unint8)1 << 3));
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 128 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+"16
+[; ;keypad.c: 16:         *((volatile unint8*)0x81) &= 0x7F;
+[e =& *U -> -> 129 `i `*Vuc -> -> 127 `i `uc ]
+"17
+[; ;keypad.c: 17: }
+[e :UE 1 ]
+}
+"19
+[; ;keypad.c: 19: unint8 key_pressed()
+[v _key_pressed `(uc ~T0 @X0 1 ef ]
+"20
+[; ;keypad.c: 20: {
+{
+[e :U _key_pressed ]
+[f ]
+"22
+[; ;keypad.c: 22:     if (0 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 0)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 0); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 1)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 1); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 2)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 2); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 3)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 3);
+[e $ ! == -> 0 `i -> 0 `i 3  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e $U 4  ]
+[e :U 3 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e :U 4 ]
+[e $ ! == -> 1 `i -> 0 `i 5  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e $U 6  ]
+[e :U 5 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e :U 6 ]
+[e $ ! == -> 1 `i -> 0 `i 7  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e $U 8  ]
+[e :U 7 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e :U 8 ]
+[e $ ! == -> 1 `i -> 0 `i 9  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e $U 10  ]
+[e :U 9 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e :U 10 ]
+"23
+[; ;keypad.c: 23:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 11  ]
+[e $U 12  ]
+[e :U 11 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 11  ]
+[e :U 12 ]
+}
+"24
+[; ;keypad.c: 24:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))); return keypad[0][0] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 14  ]
+{
+[e $U 15  ]
+[e :U 16 ]
+[e :U 15 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 16  ]
+[e :U 17 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 14 ]
+"25
+[; ;keypad.c: 25:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))); return keypad[0][1] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 18  ]
+{
+[e $U 19  ]
+[e :U 20 ]
+[e :U 19 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 20  ]
+[e :U 21 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 18 ]
+"26
+[; ;keypad.c: 26:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))); return keypad[0][2] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 22  ]
+{
+[e $U 23  ]
+[e :U 24 ]
+[e :U 23 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 24  ]
+[e :U 25 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 22 ]
+"27
+[; ;keypad.c: 27:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 26  ]
+[e $U 27  ]
+[e :U 26 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 26  ]
+[e :U 27 ]
+}
+"29
+[; ;keypad.c: 29:     if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 0)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 0); if (0 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 1)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 1); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 2)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 2); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 3)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 3);
+[e $ ! == -> 1 `i -> 0 `i 29  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e $U 30  ]
+[e :U 29 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e :U 30 ]
+[e $ ! == -> 0 `i -> 0 `i 31  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e $U 32  ]
+[e :U 31 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e :U 32 ]
+[e $ ! == -> 1 `i -> 0 `i 33  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e $U 34  ]
+[e :U 33 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e :U 34 ]
+[e $ ! == -> 1 `i -> 0 `i 35  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e $U 36  ]
+[e :U 35 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e :U 36 ]
+"30
+[; ;keypad.c: 30:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 37  ]
+[e $U 38  ]
+[e :U 37 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 37  ]
+[e :U 38 ]
+}
+"31
+[; ;keypad.c: 31:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))); return keypad[1][0] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 40  ]
+{
+[e $U 41  ]
+[e :U 42 ]
+[e :U 41 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 42  ]
+[e :U 43 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 40 ]
+"32
+[; ;keypad.c: 32:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))); return keypad[1][1] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 44  ]
+{
+[e $U 45  ]
+[e :U 46 ]
+[e :U 45 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 46  ]
+[e :U 47 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 44 ]
+"33
+[; ;keypad.c: 33:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))); return keypad[1][2] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 48  ]
+{
+[e $U 49  ]
+[e :U 50 ]
+[e :U 49 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 50  ]
+[e :U 51 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 48 ]
+"34
+[; ;keypad.c: 34:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 52  ]
+[e $U 53  ]
+[e :U 52 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 52  ]
+[e :U 53 ]
+}
+"36
+[; ;keypad.c: 36:     if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 0)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 0); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 1)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 1); if (0 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 2)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 2); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 3)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 3);
+[e $ ! == -> 1 `i -> 0 `i 55  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e $U 56  ]
+[e :U 55 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e :U 56 ]
+[e $ ! == -> 1 `i -> 0 `i 57  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e $U 58  ]
+[e :U 57 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e :U 58 ]
+[e $ ! == -> 0 `i -> 0 `i 59  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e $U 60  ]
+[e :U 59 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e :U 60 ]
+[e $ ! == -> 1 `i -> 0 `i 61  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e $U 62  ]
+[e :U 61 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e :U 62 ]
+"37
+[; ;keypad.c: 37:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 63  ]
+[e $U 64  ]
+[e :U 63 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 63  ]
+[e :U 64 ]
+}
+"38
+[; ;keypad.c: 38:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))); return keypad[2][0] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 66  ]
+{
+[e $U 67  ]
+[e :U 68 ]
+[e :U 67 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 68  ]
+[e :U 69 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 66 ]
+"39
+[; ;keypad.c: 39:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))); return keypad[2][1] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 70  ]
+{
+[e $U 71  ]
+[e :U 72 ]
+[e :U 71 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 72  ]
+[e :U 73 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 70 ]
+"40
+[; ;keypad.c: 40:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))); return keypad[2][2] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 74  ]
+{
+[e $U 75  ]
+[e :U 76 ]
+[e :U 75 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 76  ]
+[e :U 77 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 74 ]
+"41
+[; ;keypad.c: 41:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 78  ]
+[e $U 79  ]
+[e :U 78 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 78  ]
+[e :U 79 ]
+}
+"43
+[; ;keypad.c: 43:     if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 0)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 0); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 1)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 1); if (1 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 2)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 2); if (0 == 0) (*((volatile unint8*)PORT_D + (unint8)0x00) &=~((unint8)1 << 3)); else ( *((volatile unint8*)PORT_D + (unint8)0x00) |=(unint8)1 << 3);
+[e $ ! == -> 1 `i -> 0 `i 81  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e $U 82  ]
+[e :U 81 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 0 `i `uc ]
+[e :U 82 ]
+[e $ ! == -> 1 `i -> 0 `i 83  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e $U 84  ]
+[e :U 83 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 1 `i `uc ]
+[e :U 84 ]
+[e $ ! == -> 1 `i -> 0 `i 85  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e $U 86  ]
+[e :U 85 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 2 `i `uc ]
+[e :U 86 ]
+[e $ ! == -> 0 `i -> 0 `i 87  ]
+[e =& *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> ~ << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e $U 88  ]
+[e :U 87 ]
+[e =| *U + -> . `E10 3 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 3 `*Vuc `i `x -> << -> -> -> 1 `i `uc `i -> 3 `i `uc ]
+[e :U 88 ]
+"44
+[; ;keypad.c: 44:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 89  ]
+[e $U 90  ]
+[e :U 89 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 89  ]
+[e :U 90 ]
+}
+"45
+[; ;keypad.c: 45:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 0))); return keypad[3][0] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 92  ]
+{
+[e $U 93  ]
+[e :U 94 ]
+[e :U 93 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 0 `i -> 0 `i 94  ]
+[e :U 95 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 92 ]
+"46
+[; ;keypad.c: 46:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 1))); return keypad[3][1] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 96  ]
+{
+[e $U 97  ]
+[e :U 98 ]
+[e :U 97 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 1 `i -> 0 `i 98  ]
+[e :U 99 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 96 ]
+"47
+[; ;keypad.c: 47:     if(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))){ while(!(*((volatile unint8*)PORT_B + (unint8)0x00) & (1 << 2))); return keypad[3][2] ;}
+[e $ ! ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 100  ]
+{
+[e $U 101  ]
+[e :U 102 ]
+[e :U 101 ]
+[e $ ! != & -> *U + -> . `E10 1 `*Vuc * -> -> -> -> 0 `i `uc `i `x -> -> # *U -> . `E10 1 `*Vuc `i `x `i << -> 1 `i -> 2 `i -> 0 `i 102  ]
+[e :U 103 ]
+[e ) *U + &U *U + &U _keypad * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _keypad * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _keypad `ui -> -> 3 `i `ui `ux `ui `ux ]
+[e $UE 2  ]
+}
+[e :U 100 ]
+"48
+[; ;keypad.c: 48:     for(counter = ((10000000UL / 1000000) * 500 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> -> 500 `i `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 104  ]
+[e $U 105  ]
+[e :U 104 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 104  ]
+[e :U 105 ]
+}
+"50
+[; ;keypad.c: 50:     return 10;
+[e ) -> -> 10 `i `uc ]
+[e $UE 2  ]
+"51
+[; ;keypad.c: 51: }
+[e :UE 2 ]
+}

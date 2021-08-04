@@ -1,0 +1,535 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+"2229 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2229: extern volatile unsigned char ADCON1 __attribute__((address(0x09F)));
+[v _ADCON1 `Vuc ~T0 @X0 0 e@159 ]
+"34 ./microwave.h
+[; ;./microwave.h: 34: void microWave_init(void);
+[v _microWave_init `(v ~T0 @X0 0 ef ]
+"40
+[; ;./microwave.h: 40: unint8 start(void);
+[v _start `(uc ~T0 @X0 0 ef ]
+"52
+[; ;./microwave.h: 52: void start_LED_ON(void);
+[v _start_LED_ON `(v ~T0 @X0 0 ef ]
+"110 ./lcd.h
+[; ;./lcd.h: 110: void LCD_displayStringOnRowColum(unint8 row , unint8 colum , const unint8 *str);
+[v _LCD_displayStringOnRowColum `(v ~T0 @X0 0 ef3`uc`uc`*Cuc ]
+"65 ./microwave.h
+[; ;./microwave.h: 65: void scan_minutes(void);
+[v _scan_minutes `(v ~T0 @X0 0 ef ]
+"83
+[; ;./microwave.h: 83: unint8 foodIsInMicro(void);
+[v _foodIsInMicro `(uc ~T0 @X0 0 ef ]
+"71
+[; ;./microwave.h: 71: unint8 door_is_close(void);
+[v _door_is_close `(uc ~T0 @X0 0 ef ]
+"95
+[; ;./microwave.h: 95: void heat_on(void);
+[v _heat_on `(v ~T0 @X0 0 ef ]
+"125
+[; ;./microwave.h: 125: void FAN_ON(void);
+[v _FAN_ON `(v ~T0 @X0 0 ef ]
+"113
+[; ;./microwave.h: 113: void start_calc_time(void);
+[v _start_calc_time `(v ~T0 @X0 0 ef ]
+"107
+[; ;./microwave.h: 107: void show_remaining_time(void);
+[v _show_remaining_time `(v ~T0 @X0 0 ef ]
+"21
+[; ;./microwave.h: 21: extern volatile unint16 minutes ;
+[v _minutes `Vus ~T0 @X0 0 e ]
+"23
+[; ;./microwave.h: 23: extern volatile unint8 second;
+[v _second `Vuc ~T0 @X0 0 e ]
+"119
+[; ;./microwave.h: 119: void stop_cal_time(void);
+[v _stop_cal_time `(v ~T0 @X0 0 ef ]
+"101
+[; ;./microwave.h: 101: void heat_off(void);
+[v _heat_off `(v ~T0 @X0 0 ef ]
+"46
+[; ;./microwave.h: 46: unint8 stop(void);
+[v _stop `(uc ~T0 @X0 0 ef ]
+"131
+[; ;./microwave.h: 131: void FAN_OFF(void);
+[v _FAN_OFF `(v ~T0 @X0 0 ef ]
+"77
+[; ;./microwave.h: 77: unint8 door_is_open(void);
+[v _door_is_open `(uc ~T0 @X0 0 ef ]
+"89
+[; ;./microwave.h: 89: unint8 foodOutMicro(void);
+[v _foodOutMicro `(uc ~T0 @X0 0 ef ]
+"59
+[; ;./microwave.h: 59: void start_LED_OFF(void);
+[v _start_LED_OFF `(v ~T0 @X0 0 ef ]
+"95 ./lcd.h
+[; ;./lcd.h: 95: void LCD_clear_screen(void);
+[v _LCD_clear_screen `(v ~T0 @X0 0 ef ]
+"8 main.c
+[p x FOSC = HS ]
+"9
+[p x WDTE = OFF ]
+"10
+[p x PWRTE = OFF ]
+"11
+[p x BOREN = ON ]
+"12
+[p x LVP = OFF ]
+"13
+[p x CPD = OFF ]
+"14
+[p x WRT = OFF ]
+"15
+[p x CP = OFF ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"218
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 218: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"280
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 280: __asm("PORTC equ 07h");
+[; <" PORTC equ 07h ;# ">
+"342
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 342: __asm("PORTD equ 08h");
+[; <" PORTD equ 08h ;# ">
+"404
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 404: __asm("PORTE equ 09h");
+[; <" PORTE equ 09h ;# ">
+"436
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 436: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"456
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 456: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"534
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 534: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 596: __asm("PIR2 equ 0Dh");
+[; <" PIR2 equ 0Dh ;# ">
+"636
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 636: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 643: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"650
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 650: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"657
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 657: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"732
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 732: __asm("TMR2 equ 011h");
+[; <" TMR2 equ 011h ;# ">
+"739
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 739: __asm("T2CON equ 012h");
+[; <" T2CON equ 012h ;# ">
+"810
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 810: __asm("SSPBUF equ 013h");
+[; <" SSPBUF equ 013h ;# ">
+"817
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 817: __asm("SSPCON equ 014h");
+[; <" SSPCON equ 014h ;# ">
+"887
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 887: __asm("CCPR1 equ 015h");
+[; <" CCPR1 equ 015h ;# ">
+"894
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 894: __asm("CCPR1L equ 015h");
+[; <" CCPR1L equ 015h ;# ">
+"901
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 901: __asm("CCPR1H equ 016h");
+[; <" CCPR1H equ 016h ;# ">
+"908
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 908: __asm("CCP1CON equ 017h");
+[; <" CCP1CON equ 017h ;# ">
+"966
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 966: __asm("RCSTA equ 018h");
+[; <" RCSTA equ 018h ;# ">
+"1061
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1061: __asm("TXREG equ 019h");
+[; <" TXREG equ 019h ;# ">
+"1068
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1068: __asm("RCREG equ 01Ah");
+[; <" RCREG equ 01Ah ;# ">
+"1075
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1075: __asm("CCPR2 equ 01Bh");
+[; <" CCPR2 equ 01Bh ;# ">
+"1082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1082: __asm("CCPR2L equ 01Bh");
+[; <" CCPR2L equ 01Bh ;# ">
+"1089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1089: __asm("CCPR2H equ 01Ch");
+[; <" CCPR2H equ 01Ch ;# ">
+"1096
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1096: __asm("CCP2CON equ 01Dh");
+[; <" CCP2CON equ 01Dh ;# ">
+"1154
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1154: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"1161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1161: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"1257
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1257: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"1327
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1327: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"1377
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1377: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"1439
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1439: __asm("TRISC equ 087h");
+[; <" TRISC equ 087h ;# ">
+"1501
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1501: __asm("TRISD equ 088h");
+[; <" TRISD equ 088h ;# ">
+"1563
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1563: __asm("TRISE equ 089h");
+[; <" TRISE equ 089h ;# ">
+"1620
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1620: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"1682
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1682: __asm("PIE2 equ 08Dh");
+[; <" PIE2 equ 08Dh ;# ">
+"1722
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1722: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"1756
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1756: __asm("SSPCON2 equ 091h");
+[; <" SSPCON2 equ 091h ;# ">
+"1818
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1818: __asm("PR2 equ 092h");
+[; <" PR2 equ 092h ;# ">
+"1825
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1825: __asm("SSPADD equ 093h");
+[; <" SSPADD equ 093h ;# ">
+"1832
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1832: __asm("SSPSTAT equ 094h");
+[; <" SSPSTAT equ 094h ;# ">
+"2001
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2001: __asm("TXSTA equ 098h");
+[; <" TXSTA equ 098h ;# ">
+"2082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2082: __asm("SPBRG equ 099h");
+[; <" SPBRG equ 099h ;# ">
+"2089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2089: __asm("CMCON equ 09Ch");
+[; <" CMCON equ 09Ch ;# ">
+"2159
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2159: __asm("CVRCON equ 09Dh");
+[; <" CVRCON equ 09Dh ;# ">
+"2224
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2224: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"2231
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2231: __asm("ADCON1 equ 09Fh");
+[; <" ADCON1 equ 09Fh ;# ">
+"2290
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2290: __asm("EEDATA equ 010Ch");
+[; <" EEDATA equ 010Ch ;# ">
+"2297
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2297: __asm("EEADR equ 010Dh");
+[; <" EEADR equ 010Dh ;# ">
+"2304
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2304: __asm("EEDATH equ 010Eh");
+[; <" EEDATH equ 010Eh ;# ">
+"2311
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2311: __asm("EEADRH equ 010Fh");
+[; <" EEADRH equ 010Fh ;# ">
+"2318
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2318: __asm("EECON1 equ 018Ch");
+[; <" EECON1 equ 018Ch ;# ">
+"2363
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
+[; <" EECON2 equ 018Dh ;# ">
+"17 ./delay.h
+[; ;./delay.h: 17: unint32 counter;
+[v _counter `ul ~T0 @X0 1 e ]
+"28 main.c
+[; ;main.c: 28: unint8 finish=0;
+[v _finish `uc ~T0 @X0 1 e ]
+[i _finish
+-> -> 0 `i `uc
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"29
+[; ;main.c: 29: int main(void) {
+[v _main `(i ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"31
+[; ;main.c: 31:     ADCON1 = 0x06;
+[e = _ADCON1 -> -> 6 `i `uc ]
+"32
+[; ;main.c: 32:     microWave_init();
+[e ( _microWave_init ..  ]
+"34
+[; ;main.c: 34:     while(1)
+[e :U 99 ]
+"35
+[; ;main.c: 35:     {
+{
+"36
+[; ;main.c: 36:         if(start())
+[e $ ! != -> ( _start ..  `i -> 0 `i 101  ]
+"37
+[; ;main.c: 37:         {
+{
+"38
+[; ;main.c: 38:             start_LED_ON();
+[e ( _start_LED_ON ..  ]
+"40
+[; ;main.c: 40:             LCD_displayStringOnRowColum(0 , 3 ,"**welcome**");
+[e ( _LCD_displayStringOnRowColum (3 , , -> -> 0 `i `uc -> -> 3 `i `uc :s 1C ]
+"41
+[; ;main.c: 41:             LCD_displayStringOnRowColum(1 , 0 ,"microwaveProject*");
+[e ( _LCD_displayStringOnRowColum (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 2C ]
+"42
+[; ;main.c: 42:             for(counter = ((10000000UL / 1000000) * 1000000 /30 ) ; counter > 0 ; counter--){};
+{
+[e = _counter / * / -> 10000000 `ul -> -> 1000000 `l `ul -> -> 1000000 `l `ul -> -> -> 30 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 102  ]
+[e $U 103  ]
+[e :U 102 ]
+{
+}
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 102  ]
+[e :U 103 ]
+}
+"43
+[; ;main.c: 43:             scan_minutes();
+[e ( _scan_minutes ..  ]
+"44
+[; ;main.c: 44:             if(foodIsInMicro() && door_is_close())
+[e $ ! && != -> ( _foodIsInMicro ..  `i -> 0 `i != -> ( _door_is_close ..  `i -> 0 `i 105  ]
+"45
+[; ;main.c: 45:             {
+{
+"46
+[; ;main.c: 46:                 heat_on();
+[e ( _heat_on ..  ]
+"47
+[; ;main.c: 47:                 FAN_ON();
+[e ( _FAN_ON ..  ]
+"48
+[; ;main.c: 48:                 start_calc_time();
+[e ( _start_calc_time ..  ]
+"50
+[; ;main.c: 50:                 while(!stop() )
+[e $U 106  ]
+[e :U 107 ]
+"51
+[; ;main.c: 51:                 {
+{
+"52
+[; ;main.c: 52:                     if(!start())
+[e $ ! ! != -> ( _start ..  `i -> 0 `i 109  ]
+"53
+[; ;main.c: 53:                     {
+{
+"54
+[; ;main.c: 54:                         show_remaining_time();
+[e ( _show_remaining_time ..  ]
+"55
+[; ;main.c: 55:                         if(minutes == 0 && second == 0 )
+[e $ ! && == -> _minutes `ui -> -> 0 `i `ui == -> _second `i -> 0 `i 110  ]
+"56
+[; ;main.c: 56:                         {
+{
+"57
+[; ;main.c: 57:                             stop_cal_time();
+[e ( _stop_cal_time ..  ]
+"58
+[; ;main.c: 58:                             show_remaining_time();
+[e ( _show_remaining_time ..  ]
+"59
+[; ;main.c: 59:                             heat_off();
+[e ( _heat_off ..  ]
+"60
+[; ;main.c: 60:                             LCD_displayStringOnRowColum(1 , 0 ,"*******GOOD**********");
+[e ( _LCD_displayStringOnRowColum (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 3C ]
+"61
+[; ;main.c: 61:                             while(1)
+[e :U 112 ]
+"62
+[; ;main.c: 62:                             {
+{
+"63
+[; ;main.c: 63:                                 if(stop())
+[e $ ! != -> ( _stop ..  `i -> 0 `i 114  ]
+"64
+[; ;main.c: 64:                                 {
+{
+"65
+[; ;main.c: 65:                                     finish =1;
+[e = _finish -> -> 1 `i `uc ]
+"66
+[; ;main.c: 66:                                     break;
+[e $U 113  ]
+"67
+[; ;main.c: 67:                                 }
+}
+[e $U 115  ]
+"68
+[; ;main.c: 68:                                 else if(start())
+[e :U 114 ]
+[e $ ! != -> ( _start ..  `i -> 0 `i 116  ]
+"69
+[; ;main.c: 69:                                 {
+{
+"70
+[; ;main.c: 70:                                     scan_minutes();
+[e ( _scan_minutes ..  ]
+"71
+[; ;main.c: 71:                                     start_calc_time();
+[e ( _start_calc_time ..  ]
+"72
+[; ;main.c: 72:                                     break;
+[e $U 113  ]
+"73
+[; ;main.c: 73:                                 }
+}
+[e :U 116 ]
+[e :U 115 ]
+"74
+[; ;main.c: 74:                             }
+}
+[e :U 111 ]
+[e $U 112  ]
+[e :U 113 ]
+"75
+[; ;main.c: 75:                             if(finish)
+[e $ ! != -> _finish `i -> 0 `i 117  ]
+"76
+[; ;main.c: 76:                             {
+{
+"77
+[; ;main.c: 77:                                 finish=0;
+[e = _finish -> -> 0 `i `uc ]
+"78
+[; ;main.c: 78:                                 break;
+[e $U 108  ]
+"79
+[; ;main.c: 79:                             }
+}
+[e :U 117 ]
+"80
+[; ;main.c: 80:                             heat_on();
+[e ( _heat_on ..  ]
+"81
+[; ;main.c: 81:                         }
+}
+[e :U 110 ]
+"82
+[; ;main.c: 82:                     }
+}
+[e $U 118  ]
+"83
+[; ;main.c: 83:                     else
+[e :U 109 ]
+"84
+[; ;main.c: 84:                     {
+{
+"85
+[; ;main.c: 85:                        stop_cal_time();
+[e ( _stop_cal_time ..  ]
+"86
+[; ;main.c: 86:                        heat_off();
+[e ( _heat_off ..  ]
+"87
+[; ;main.c: 87:                        LCD_displayStringOnRowColum(1 , 0 ,"*****PAUSE*****");
+[e ( _LCD_displayStringOnRowColum (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 4C ]
+"88
+[; ;main.c: 88:                        while(!start());
+[e $U 119  ]
+[e :U 120 ]
+[e :U 119 ]
+[e $ ! != -> ( _start ..  `i -> 0 `i 120  ]
+[e :U 121 ]
+"89
+[; ;main.c: 89:                        start_calc_time();
+[e ( _start_calc_time ..  ]
+"90
+[; ;main.c: 90:                        heat_on();
+[e ( _heat_on ..  ]
+"91
+[; ;main.c: 91:                     }
+}
+[e :U 118 ]
+"92
+[; ;main.c: 92:                 }
+}
+[e :U 106 ]
+"50
+[; ;main.c: 50:                 while(!stop() )
+[e $ ! != -> ( _stop ..  `i -> 0 `i 107  ]
+[e :U 108 ]
+"93
+[; ;main.c: 93:                 stop_cal_time();
+[e ( _stop_cal_time ..  ]
+"94
+[; ;main.c: 94:                 heat_off();
+[e ( _heat_off ..  ]
+"95
+[; ;main.c: 95:                 FAN_OFF();
+[e ( _FAN_OFF ..  ]
+"96
+[; ;main.c: 96:                 door_is_open();
+[e ( _door_is_open ..  ]
+"97
+[; ;main.c: 97:                 foodOutMicro();
+[e ( _foodOutMicro ..  ]
+"98
+[; ;main.c: 98:                 start_LED_OFF();
+[e ( _start_LED_OFF ..  ]
+"99
+[; ;main.c: 99:                 LCD_clear_screen();
+[e ( _LCD_clear_screen ..  ]
+"100
+[; ;main.c: 100:             }
+}
+[e :U 105 ]
+"101
+[; ;main.c: 101:         }
+}
+[e :U 101 ]
+"102
+[; ;main.c: 102:     }
+}
+[e :U 98 ]
+[e $U 99  ]
+[e :U 100 ]
+"104
+[; ;main.c: 104:     return 0;
+[e ) -> 0 `i ]
+[e $UE 97  ]
+"105
+[; ;main.c: 105: }
+[e :UE 97 ]
+}
+[a 2C 109 105 99 114 111 119 97 118 101 80 114 111 106 101 99 116 42 0 ]
+[a 1C 42 42 119 101 108 99 111 109 101 42 42 0 ]
+[a 4C 42 42 42 42 42 80 65 85 83 69 42 42 42 42 42 0 ]
+[a 3C 42 42 42 42 42 42 42 71 79 79 68 42 42 42 42 42 42 42 42 42 42 0 ]

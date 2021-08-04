@@ -1,0 +1,96 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"4 timer0.c
+[; ;timer0.c: 4: void TIMER0_init(TIMER0_CONFIG *data)
+[c E24 0 1 2 3 4 5 6 7 0 1 .. ]
+[n E24 . internal_PRE_2 internal_PRE_4 internal_PRE_8 internal_PRE_16 internal_PRE_32 internal_PRE_64 internal_PRE_128 internal_PRE_256 External_positive_edge External_negative_edge  ]
+[c E36 0 1 .. ]
+[n E36 . T0_INT_D T0_INT_E  ]
+"41 ./timer0.h
+[; ;./timer0.h: 41: typedef struct{
+[s S1 `E24 1 `E36 1 ]
+[n S1 . CLK_state INT_state ]
+"4 timer0.c
+[; ;timer0.c: 4: void TIMER0_init(TIMER0_CONFIG *data)
+[v _TIMER0_init `(v ~T0 @X0 1 ef1`*S1 ]
+"5
+[; ;timer0.c: 5: {
+{
+[e :U _TIMER0_init ]
+"4
+[; ;timer0.c: 4: void TIMER0_init(TIMER0_CONFIG *data)
+[v _data `*S1 ~T0 @X0 1 r1 ]
+"5
+[; ;timer0.c: 5: {
+[f ]
+"6
+[; ;timer0.c: 6:     *((volatile unint8*)0X81) &=0XC0;
+[e =& *U -> -> 129 `i `*Vuc -> -> 192 `i `uc ]
+"8
+[; ;timer0.c: 8:     if(data->CLK_state != External_positive_edge && data->CLK_state != External_negative_edge)
+[e $ ! && != -> . *U _data 0 `ui -> . `E24 8 `ui != -> . *U _data 0 `ui -> . `E24 9 `ui 3  ]
+"9
+[; ;timer0.c: 9:     {
+{
+"10
+[; ;timer0.c: 10:         *((volatile unint8*)0X81) |=(data->CLK_state << 0);
+[e =| *U -> -> 129 `i `*Vuc -> << -> . *U _data 0 `ui -> 0 `i `uc ]
+"11
+[; ;timer0.c: 11:     }
+}
+[e $U 4  ]
+"12
+[; ;timer0.c: 12:     else
+[e :U 3 ]
+"13
+[; ;timer0.c: 13:     {
+{
+"14
+[; ;timer0.c: 14:         *((volatile unint8*)0X81) |=(1<<5) | (data->CLK_state << 4);
+[e =| *U -> -> 129 `i `*Vuc -> | -> << -> 1 `i -> 5 `i `ui << -> . *U _data 0 `ui -> 4 `i `uc ]
+"15
+[; ;timer0.c: 15:     }
+}
+[e :U 4 ]
+"17
+[; ;timer0.c: 17:     *((volatile unint8*)0X0B) |=(data->INT_state << 5);
+[e =| *U -> -> 11 `i `*Vuc -> << -> . *U _data 1 `ui -> 5 `i `uc ]
+"18
+[; ;timer0.c: 18: }
+[e :UE 2 ]
+}
+"20
+[; ;timer0.c: 20: void set_T0DR(unint8 val)
+[v _set_T0DR `(v ~T0 @X0 1 ef1`uc ]
+"21
+[; ;timer0.c: 21: {
+{
+[e :U _set_T0DR ]
+"20
+[; ;timer0.c: 20: void set_T0DR(unint8 val)
+[v _val `uc ~T0 @X0 1 r1 ]
+"21
+[; ;timer0.c: 21: {
+[f ]
+"22
+[; ;timer0.c: 22:     *((volatile unint8*)0X01) = val;
+[e = *U -> -> 1 `i `*Vuc _val ]
+"23
+[; ;timer0.c: 23: }
+[e :UE 5 ]
+}
+"25
+[; ;timer0.c: 25: unint8 get_T0DR()
+[v _get_T0DR `(uc ~T0 @X0 1 ef ]
+"26
+[; ;timer0.c: 26: {
+{
+[e :U _get_T0DR ]
+[f ]
+"27
+[; ;timer0.c: 27:     return *((volatile unint8*)0X01);
+[e ) *U -> -> 1 `i `*Vuc ]
+[e $UE 6  ]
+"28
+[; ;timer0.c: 28: }
+[e :UE 6 ]
+}
